@@ -7,6 +7,9 @@ import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.Map;
+
 @RestController
 @RequestMapping("/api/cache")
 public class CacheController {
@@ -24,6 +27,12 @@ public class CacheController {
     public ResponseEntity<Cache> saveCache(@Valid @RequestBody Cache cache) {
         Cache savedCache = cacheService.saveCache(cache);
          return ResponseEntity.status(200).body(savedCache);
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<Map<String, Object>> getAll() {
+        Map<String, Object> map = lruCacheService.getAll();
+        return ResponseEntity.status(200).body(map);
     }
 
     @GetMapping("/{key}")

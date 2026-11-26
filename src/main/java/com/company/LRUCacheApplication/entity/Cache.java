@@ -3,7 +3,7 @@ package com.company.LRUCacheApplication.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="cache")
+@Table(name="lrucaches")
 public class Cache {
 
     @Id

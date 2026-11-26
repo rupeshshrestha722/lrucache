@@ -32,9 +32,6 @@ public class CacheServiceImpl implements CacheService {
     @Override
     public Optional<Object> getBeyKey(String key) {
         Optional<Object> cache = cacheService.get(key);
-        if (!cache.isPresent()) {
-            return null;
-        }
         return cache;
     }
 

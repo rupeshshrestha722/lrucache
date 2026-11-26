@@ -25,15 +25,21 @@ public class LruCacheService {
         };
     }
 
-    public Optional<Object> get(String key) {
+    public synchronized Optional<Object> get(String key) {
         return Optional.ofNullable(cache.get(key));
     }
 
-    public void put(String key, Object value) {
+
+
+    public synchronized void put(String key, Object value) {
         cache.put(key, value);
     }
 
-    public boolean evict(String key) {
+    public synchronized boolean evict(String key) {
         return cache.remove(key) != null;
+    }
+
+    public Map<String, Object> getAll() {
+            return new LinkedHashMap<>(cache);
     }
 }
